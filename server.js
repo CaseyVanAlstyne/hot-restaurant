@@ -33,14 +33,15 @@ app.get("/api/waitlist", (req, res) => {
 
 // Adds a reservation to the list
 app.post("/api/add-reservation", (req, res) => {
-waitlist.push(req.body);
-return res.json('OK');
+    waitlist.push(req.body);
+    console.log(req.body);
+    return res.json('OK');
 });
 
 // Deletes a reservation from the list corresponding to given unique ID
 // app.post("/api/remove-reservation", (req, res) => {
 //     waitlist = waitlist.filter(reservation => reservation.customerID != req);
-})
+// })
 
 // Starts the server to begin listening
 // =============================================================
