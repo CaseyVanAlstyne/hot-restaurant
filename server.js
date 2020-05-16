@@ -50,14 +50,14 @@ app.get("/api/waitlist", (req, res) => {
 });
 // Adds a reservation to the list
 app.post("/api/add-reservation", (req, res) => {
-    waitlist.push(req);
+    waitlist.push(req.body);
 });
 // Deletes a reservation from the list corresponding to given unique ID
-app.post("/api/remove-reservation", (req, res) => {
-    waitlist = waitlist.filter(reservation => reservation.customerID != req);
-})
+// app.post("/api/remove-reservation", (req, res) => {
+//         waitlist = waitlist.filter(reservation => reservation.customerID != req);
+//     })
 // Starts the server to begin listening
 // =============================================================
-app.listen(PORT, function () {
+app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
 });
