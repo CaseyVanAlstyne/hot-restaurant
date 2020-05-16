@@ -12,47 +12,31 @@ var PORT = 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Star Wars Characters (DATA)
+// arrays for tables and waitlist
 // =============================================================
-var characters = [
-    {
-        routeName: "yoda",
-        name: "Yoda",
-        role: "Jedi Master",
-        age: 900,
-        forcePoints: 2000
-    },
-    {
-        routeName: "darthmaul",
-        name: "Darth Maul",
-        role: "Sith Lord",
-        age: 200,
-        forcePoints: 1200
-    },
-    {
-        routeName: "obiwankenobi",
-        name: "Obi Wan Kenobi",
-        role: "Jedi Master",
-        age: 55,
-        forcePoints: 1350
-    }
-];
+let tables = [];
+let waitlist = [];
+let newReservations = [];
 
 // Routes
 // =============================================================
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "view.html"));
+    res.sendFile(path.join(__dirname, "home.html"));
 });
 
 app.get("/add", function (req, res) {
     res.sendFile(path.join(__dirname, "add.html"));
 });
 
+app.get("/reservation", function (req, res) {
+    res.sendFile(path.join(__dirname, "reservation.html"));
+});
+
 // Displays all characters
-app.get("/api/characters", function (req, res) {
-    return res.json(characters);
+app.get("/reservation", function (req, res) {
+    return res.json(reservation);
 });
 
 // Displays a single character, or returns false

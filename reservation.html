@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation</title>
+    <!-- Latest compiled and minified CSS & JS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Make a table reservation</h1>
+            <h3>The greatest resource in the galaxy for table reservations!</h3>
+            <hr>
+            <a href="/"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span> View
+                    reservations</button></a>
+        </div>
+        <div class="row">
+
+            <div class="col-12">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><strong>Add reservations</strong></h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" role="form">
+
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="role">Phone Number</label>
+                                <input type="text" class="form-control" id="phoneNumber">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="age">Email</label>
+                                <input type="text" class="form-control" id="email">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="force-points">Unique ID</label>
+                                <input type="text" class="form-control" id="uniqueid">
+                            </div>
+
+                        </form>
+                        <br>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary btn-md" id="add-btn"><span
+                                    class="fa fa-fire"></span> Submit Reservation</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        // Question: What does this code do?
+        $("#add-btn").on("click", function (event) {
+            event.preventDefault();
+            var newReservation = {
+                name: $("#name").val().trim(),
+                phoneNumber: $("#phone-number").val().trim(),
+                email: $("#email").val().trim(),
+                uniqueid: $("#unique-id").val().trim()
+            };
+
+            $.post("/reservation", newReservation)
+                .then(function (data) {
+                    console.log("add.html", data);
+                    alert("Adding reservation...");
+                });
+        });
+    </script>
+
+</body>
+
+</html>
